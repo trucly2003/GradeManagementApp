@@ -6,11 +6,16 @@ package com.nttl.service;
 
 import com.nttl.pojo.Course;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
  * @author Ly Nguyen
  */
 public interface CourseService {
-    List<Course> getCourse();
+    List<Course> getCourses(Map<String, String> params);
+    void addOrUpdate(Course c);
+    Course getCourseById(int Id);
+    List<Course> getCoursesBySemesterId(int id);
+    List<Course> getListCourse();
 }

@@ -6,7 +6,9 @@ package com.nttl.service.impl;
 
 import com.nttl.pojo.Course;
 import com.nttl.repository.CourseRepository;
+import com.nttl.service.CourseService;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,12 +19,34 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class CourseServiceImpl {
+public class CourseServiceImpl implements CourseService{
     
     @Autowired
     private CourseRepository courseRepo;
     
-    public List<Course> getCourse() {
-        return this.courseRepo.getCourse();
+
+    @Override
+    public List<Course> getCourses(Map<String, String> params) {
+        return this.courseRepo.getCourses(params);
     }
+
+    @Override
+    public void addOrUpdate(Course c) {
+        this.courseRepo.addOrUpdate(c);
+    }
+
+    @Override
+    public Course getCourseById(int Id) {
+        return this.courseRepo.getCourseById(Id);
+    }
+    
+    @Override
+    public List<Course> getCoursesBySemesterId(int id) {
+        return this.courseRepo.getCoursesBySemesterId(id);
+    }
+    
+    @Override
+   public List<Course> getListCourse() {
+       return this.courseRepo.getListCourse();
+   }
 }

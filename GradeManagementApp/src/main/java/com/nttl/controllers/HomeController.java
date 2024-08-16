@@ -4,7 +4,15 @@
  */
 package com.nttl.controllers;
 
+
+import com.nttl.service.CourseService;
+import com.nttl.service.SemesterService;
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -13,4 +21,19 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class HomeController {
     
+    @Autowired
+    private SemesterService semesterService;
+    @Autowired
+    private CourseService courseService;
+    
+    
+    
+    @RequestMapping("/")
+    public String index(Model model) {
+        
+        model.addAttribute("semesters", this.semesterService.getSemester());
+        model.addAttribute("courses", this.courseService.getCourses(null));
+        
+        return "home";
+    }
 }

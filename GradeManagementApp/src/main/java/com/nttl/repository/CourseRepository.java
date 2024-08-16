@@ -6,11 +6,16 @@ package com.nttl.repository;
 
 import com.nttl.pojo.Course;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
  * @author Ly Nguyen
  */
 public interface CourseRepository {
-    List<Course> getCourse();
+    List<Course> getCourses(Map<String, String> params);
+    void addOrUpdate(Course c);
+    Course getCourseById(int Id);
+    List<Course> getCoursesBySemesterId(int id);
+    List<Course> getListCourse();
 }
