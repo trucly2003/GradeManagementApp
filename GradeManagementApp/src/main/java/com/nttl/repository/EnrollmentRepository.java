@@ -5,18 +5,19 @@
 package com.nttl.repository;
 
 import com.nttl.pojo.Course;
+import com.nttl.pojo.Enrollment;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  *
  * @author Ly Nguyen
  */
-public interface CourseRepository {
-    List<Course> getCourses(Map<String, String> params);
-    void addOrUpdate(Course c);
-    Course getCourseById(int Id);
-    List<Course> getCoursesBySemesterId(int id);
-    List<Course> getListCourse();
-    void deleteCourse(int id);
+public interface EnrollmentRepository {
+    boolean existsByCourseId(int courseId);
+    List<Enrollment> getAllEnrollments();
+    void addOrUpdate(Enrollment enrollment);
+    Enrollment getEnrollmentById(int id);
+    void deleteEnrollment(int id);
 }

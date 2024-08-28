@@ -18,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -37,26 +38,41 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Course implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "course_id")
     private Integer courseId;
+
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
+    @NotNull(message = "{course.name.errMsg}")
+    @Size(min = 5, max = 100, message = "Tên khóa học phải có độ dài từ 5 đến 100 ký tự")
     @Column(name = "name")
     private String name;
+
     @OneToMany(mappedBy = "courseId")
     private Set<Forum> forumSet;
+
     @JoinColumn(name = "semester_id", referencedColumnName = "semester_id")
     @ManyToOne
     private Semester semesterId;
+
     @JoinColumn(name = "lecturer_id", referencedColumnName = "user_id")
     @ManyToOne
     private User lecturerId;
+
     @OneToMany(mappedBy = "courseId")
     private Set<Enrollment> enrollmentSet;
+
+    @Size(max = 255, message = "{course.description.size}")
+    @Column(name = "description")
+    private String description;
+
+    @Min(value = 1, message = "{course.credits.min}")
+    @Column(name = "credits")
+    private int credits;
+
 
     public Course() {
     }
@@ -144,5 +160,33 @@ public class Course implements Serializable {
     public String toString() {
         return "com.nttl.pojo.Course[ courseId=" + courseId + " ]";
     }
-    
+
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+     * @return the credits
+     */
+    public int getCredits() {
+        return credits;
+    }
+
+    /**
+     * @param credits the credits to set
+     */
+    public void setCredits(int credits) {
+        this.credits = credits;
+    }
+
 }

@@ -20,26 +20,26 @@
             <tr>
                 <td>Semester</td>
                 <td class="d-flex" style="justify-content: end">
-                    <a href="#" class="btn btn-info">&Sqrt;</a>
-                    <button class="btn btn-danger">&times;  </button>
+                    <a href="#" class="btn"><i class="bi bi-pencil-square"></i></a>
+                    <button class="btn"><i class="bi bi-trash3"></i></button>
                 </td>
-
             </tr>
             <tr>
                 <td>Course</td>
                 <td class="d-flex" style="justify-content: end">
-                    <a href="#" class="btn btn-info">&Sqrt;</a>
-                    <button class="btn btn-danger">&times;  </button>
+                    <a href="#" class="btn"><i class="bi bi-pencil-square"></i></a>
+
+                    <button class="btn"><i class="bi bi-trash3"></i> </button>
                 </td>
             </tr>
             <tr>
                 <td>Class</td>
                 <td class="d-flex" style="justify-content: end">
-                    <a href="#" class="btn btn-info">&Sqrt;</a>
-                    <button class="btn btn-danger">&times;  </button>
+                    <a href="#" class="btn"><i class="bi bi-pencil-square"></i></a>
+                    <button class="btn"><i class="bi bi-trash3"></i></button>
                 </td>
             </tr>
-            
+
         </tbody>
     </table>
 </div>

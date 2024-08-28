@@ -6,6 +6,8 @@ package com.nttl.service.impl;
 
 import com.nttl.pojo.Course;
 import com.nttl.repository.CourseRepository;
+import com.nttl.repository.EnrollmentRepository;
+import com.nttl.repository.ForumRepository;
 import com.nttl.service.CourseService;
 import java.util.List;
 import java.util.Map;
@@ -19,11 +21,16 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class CourseServiceImpl implements CourseService{
-    
+public class CourseServiceImpl implements CourseService {
+
     @Autowired
     private CourseRepository courseRepo;
     
+    @Autowired
+    private EnrollmentRepository enrollRepo;
+    
+    @Autowired
+    private ForumRepository forumRepo;
 
     @Override
     public List<Course> getCourses(Map<String, String> params) {
@@ -39,14 +46,39 @@ public class CourseServiceImpl implements CourseService{
     public Course getCourseById(int Id) {
         return this.courseRepo.getCourseById(Id);
     }
-    
+
     @Override
     public List<Course> getCoursesBySemesterId(int id) {
         return this.courseRepo.getCoursesBySemesterId(id);
     }
-    
+
     @Override
-   public List<Course> getListCourse() {
-       return this.courseRepo.getListCourse();
-   }
+    public List<Course> getListCourse() {
+        return this.courseRepo.getListCourse();
+    }
+
+    private boolean isCourseEnrolled(Integer courseId) {
+        // Kiểm tra xem khóa học có đang được đăng ký trong bảng Enrollment không
+        return enrollRepo.existsByCourseId(courseId);
+    }
+
+    private boolean isCourseInForum(Integer courseId) {
+        // Kiểm tra xem khóa học có xuất hiện trong bảng Forum không
+        return forumRepo.existsByCourseId(courseId);
+    }
+
+    @Override
+    public boolean deleteCourse(int id) {
+       
+        if (isCourseEnrolled(id)) {
+            return false;
+        }
+
+        if (isCourseInForum(id)) {
+            return false; 
+        }
+
+        this.courseRepo.deleteCourse(id);
+        return true;
+    }
 }

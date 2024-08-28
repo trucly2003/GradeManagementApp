@@ -4,16 +4,17 @@
  */
 package com.nttl.service;
 
-import com.nttl.pojo.Semester;
-import com.nttl.pojo.User;
+import com.nttl.pojo.Forum;
 import java.util.List;
 
 /**
  *
  * @author Ly Nguyen
  */
-public interface SemesterService {
-      List<Semester> getSemester();
-      Semester getSemesterById(int id);
-     
+public interface ForumService {
+    List<Forum> getAllForums();
+    Forum getForumById(int id);
+    void addOrUpdate(Forum forum);
+    void deleteForum(int id);
+    boolean existsByCourseId(int courseId);
 }

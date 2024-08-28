@@ -4,6 +4,7 @@
  */
 package com.nttl.repository.impl;
 
+import com.nttl.pojo.Course;
 import com.nttl.pojo.User;
 import com.nttl.repository.UserRepository;
 import java.util.List;
@@ -22,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class UserRepositoryImpl implements UserRepository{
+public class UserRepositoryImpl implements UserRepository {
 
     @Autowired
     private LocalSessionFactoryBean factory;
@@ -36,7 +37,7 @@ public class UserRepositoryImpl implements UserRepository{
         q.select(root).where(b.equal(root.get("userRole"), "lecturer"));
         return s.createQuery(q).getResultList();
     }
-    
+
     @Override
     public List<User> getStudent() {
         Session s = this.factory.getObject().getCurrentSession();
@@ -46,14 +47,20 @@ public class UserRepositoryImpl implements UserRepository{
         q.select(root).where(b.equal(root.get("userRole"), "student"));
         return s.createQuery(q).getResultList();
     }
-    
+
     @Override
     public void addOrUpdate(User u) {
         Session s = this.factory.getObject().getCurrentSession();
         if (u.getUserId() != null) {
-            s.update(s);
+            s.update(u);
         } else {
-            s.save(s);
+            s.save(u);
         }
+    }
+
+    @Override
+    public User getUserById(int id) {
+        Session s = this.factory.getObject().getCurrentSession();
+        return s.get(User.class, id);
     }
 }

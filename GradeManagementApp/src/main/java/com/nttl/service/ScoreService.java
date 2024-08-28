@@ -4,16 +4,17 @@
  */
 package com.nttl.service;
 
-import com.nttl.pojo.Semester;
-import com.nttl.pojo.User;
+import com.nttl.pojo.Score;
 import java.util.List;
 
 /**
  *
  * @author Ly Nguyen
  */
-public interface SemesterService {
-      List<Semester> getSemester();
-      Semester getSemesterById(int id);
-     
+public interface ScoreService {
+    boolean existsByEnrollmentId(int enrollmentId);
+    List<Score> getAllScores();
+    void addOrUpdate(Score score);
+    Score getScoreById(int id);
+    void deleteScore(int id);
 }

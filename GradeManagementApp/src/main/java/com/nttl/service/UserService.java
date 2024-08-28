@@ -17,4 +17,5 @@ public interface UserService {
 
     List<User> getStudent();
     void addOrUpdate(User u);
+     User getUserById(int id);
 }

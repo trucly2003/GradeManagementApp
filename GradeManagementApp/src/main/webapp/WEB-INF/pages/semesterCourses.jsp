@@ -7,13 +7,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <h1>Học kỳ: ${semester.name}</h1>
-<h2>Danh sách các môn học</h2>
+<h1 class="text-center text-primary mt-1">DANH SÁCH MÔN HỌC</h1>
 <table class="table">
-    <thead>
+    <thead class="table-dark">
         <tr>
             <th>Tên môn học</th>
             <th>Mã môn học</th>
+            <th>Số tín chỉ</th>
+             <th>Mô tả</th>
         </tr>
     </thead>
     <tbody>
@@ -21,10 +24,15 @@
             <tr>
                 <td>${c.name}</td>
                 <td>${c.courseId}</td>
+                <td>${c.credits}</td>
+            <td>${c.description}</td>
             </tr>
         </c:forEach>
     </tbody>
+    
 </table>
+<a class="btn btn-info mb-3" href="<c:url value='/course/add'/>?semesterId=${semester.semesterId}">Thêm khóa học</a>
+
 
 
 

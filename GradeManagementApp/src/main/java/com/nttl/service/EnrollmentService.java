@@ -4,16 +4,17 @@
  */
 package com.nttl.service;
 
-import com.nttl.pojo.Semester;
-import com.nttl.pojo.User;
+import com.nttl.pojo.Enrollment;
 import java.util.List;
 
 /**
  *
  * @author Ly Nguyen
  */
-public interface SemesterService {
-      List<Semester> getSemester();
-      Semester getSemesterById(int id);
-     
+public interface EnrollmentService {
+    boolean existsByCourseId(int courseId);
+    List<Enrollment> getAllEnrollments();
+    void addOrUpdate(Enrollment enrollment);
+    Enrollment getEnrollmentById(int id);
+    void deleteEnrollment(int id);
 }

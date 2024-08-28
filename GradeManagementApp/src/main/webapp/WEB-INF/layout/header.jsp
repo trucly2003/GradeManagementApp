@@ -12,7 +12,7 @@
 
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="<c:url value='/home'/>">GradeManagement Admin</a>
+        <a class="navbar-brand" href="<c:url value='/'/>">GradeManagement Admin</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -25,7 +25,10 @@
                      <a class="nav-link" href="<c:url value='/user?role=student'/>">Quản lý sinh viên</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<c:url value='/semester'/>">Quản lý môn học</a>
+                    <a class="nav-link" href="<c:url value='/course'/>">Quản lý môn học</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="<c:url value='/enrollment'/>">Quản lý đăng ký môn học</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Quản lý điểm số</a>

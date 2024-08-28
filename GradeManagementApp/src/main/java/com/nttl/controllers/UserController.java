@@ -10,6 +10,7 @@ import com.nttl.pojo.User;
 import com.nttl.service.UserService;
 import java.io.IOException;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,9 +30,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/user")
 public class UserController {
 
-      @Autowired
+    @Autowired
     private Cloudinary cloudinary;
-    
+
     @Autowired
     private UserService userService;
 
@@ -56,25 +57,14 @@ public class UserController {
         return "addUser";
     }
 
-  
-
-    @RequestMapping(path = "/upload", method = RequestMethod.POST)
-    public String upload(@ModelAttribute("user") User user) {
-        try {
-            cloudinary.uploader().upload(user.getAvatar().getBytes(),
-                    ObjectUtils.asMap("resource_type", "auto"));
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return "index";
-    }
 
     @PostMapping("/add")
-    public String addUser(@ModelAttribute("user") User user, BindingResult result, Model model) {
-        if (result.hasErrors()) {
+    public String addUser(@ModelAttribute(value = "user") @Valid User u,
+            BindingResult rs) {
+        if (rs.hasErrors()) {
             return "addUser";
         }
-        this.userService.addOrUpdate(user);
-        return "redirect:/user?role=" + user.getUserRole();
+        this.userService.addOrUpdate(u);
+        return "redirect:/user?role=" + u.getUserRole();
     }
 }

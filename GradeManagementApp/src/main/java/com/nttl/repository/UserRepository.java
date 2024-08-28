@@ -23,4 +23,6 @@ public interface UserRepository {
 
     List<User> getStudent();
     void addOrUpdate(User u);
+    
+    User getUserById(int id);
 }

@@ -23,7 +23,6 @@ public class DispatcherServletInit extends AbstractAnnotationConfigDispatcherSer
             HibernateConfigs.class,
             TilesConfigs.class, 
             WebAppContextConfigs.class,
-            CloudinaryConfigs.class
         };
     }
 

@@ -2,27 +2,27 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
 "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-<!--định nghĩa trang base, trang nền -->
+    <!--định nghĩa trang base, trang nền -->
     <definition name="baseLayout" template="/WEB-INF/layout/base.jsp">
         <put-attribute name="title" value="..." />
         <put-attribute name="header" value="/WEB-INF/layout/header.jsp" />
         <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
         <put-attribute name="content" value="..." />
     </definition>
-<!--Định nghĩa trang chủ, cho kế thừa trang base-->
+    <!--Định nghĩa trang chủ, cho kế thừa trang base-->
     <definition name="home" extends="baseLayout">
         <put-attribute name="title" value="Trang chủ" />
         <put-attribute name="content" value="/WEB-INF/pages/index.jsp"/>
     </definition>
-     <definition name="course" extends="baseLayout">
+    <definition name="course" extends="baseLayout">
         <put-attribute name="title" value="Khóa Học" />
         <put-attribute name="content" value="/WEB-INF/pages/courses.jsp"/>
     </definition>
-     <definition name="user" extends="baseLayout">
+    <definition name="user" extends="baseLayout">
         <put-attribute name="title" value="Quản lý người dùng" />
         <put-attribute name="content" value="/WEB-INF/pages/users.jsp"/>
     </definition>
-     <definition name="semester" extends="baseLayout">
+    <definition name="semester" extends="baseLayout">
         <put-attribute name="title" value="Quản lý học kỳ" />
         <put-attribute name="content" value="/WEB-INF/pages/semesters.jsp"/>
     </definition>
@@ -30,8 +30,16 @@
         <put-attribute name="title" value="Thêm người dùng" />
         <put-attribute name="content" value="/WEB-INF/pages/addUser.jsp"/>
     </definition>
-     <definition name="semesterCourse" extends="baseLayout">
+    <definition name="semesterCourse" extends="baseLayout">
         <put-attribute name="title" value="Thêm người dùng" />
         <put-attribute name="content" value="/WEB-INF/pages/semesterCourses.jsp"/>
+    </definition>
+    <definition name="addCourse" extends="baseLayout">
+        <put-attribute name="title" value="Thêm khóa học" />
+        <put-attribute name="content" value="/WEB-INF/pages/addCourses.jsp"/>
+    </definition>
+    <definition name="enrollment" extends="baseLayout">
+        <put-attribute name="title" value="Ghi danh khóa học" />
+        <put-attribute name="content" value="/WEB-INF/pages/enrollments.jsp" />
     </definition>
 </tiles-definitions>

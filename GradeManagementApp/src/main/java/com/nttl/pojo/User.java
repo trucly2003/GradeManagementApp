@@ -51,40 +51,40 @@ public class User implements Serializable {
     private Integer userId;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
+    @Size(min = 1, max = 50, message = "{user.firstName.errMsg}")
     @Column(name = "first_name")
     private String firstName;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
+    @Size(min=1, max = 50, message = "{user.lastName.errMsg}")
     @Column(name = "last_name")
     private String lastName;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
+    @Size(min = 1, max = 50, message = "{user.username.errMsg}")
     @Column(name = "username")
     private String username;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
+
     @Column(name = "password")
     private String password;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
+
     @Column(name = "email")
     private String email;
     @Column(name = "active")
     private Boolean active;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
+    
     @Column(name = "avatar")
     private String avatar;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 8)
+
     @Column(name = "user_role")
     private String userRole;
     @OneToMany(mappedBy = "userId")
@@ -95,7 +95,7 @@ public class User implements Serializable {
     private Set<Comment> commentSet;
     @OneToMany(mappedBy = "studentId")
     private Set<Enrollment> enrollmentSet;
-    
+
     @Transient
     private MultipartFile file;
 
@@ -263,5 +263,5 @@ public class User implements Serializable {
     public void setFile(MultipartFile file) {
         this.file = file;
     }
-    
+
 }

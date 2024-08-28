@@ -23,8 +23,7 @@ public class HomeController {
     
     @Autowired
     private SemesterService semesterService;
-    @Autowired
-    private CourseService courseService;
+  
     
     
     
@@ -32,7 +31,6 @@ public class HomeController {
     public String index(Model model) {
         
         model.addAttribute("semesters", this.semesterService.getSemester());
-        model.addAttribute("courses", this.courseService.getCourses(null));
         
         return "home";
     }

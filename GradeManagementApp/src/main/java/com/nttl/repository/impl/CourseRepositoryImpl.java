@@ -90,9 +90,9 @@ public class CourseRepositoryImpl implements CourseRepository {
     public void addOrUpdate(Course c) {
         Session s = this.factory.getObject().getCurrentSession();
         if (c.getCourseId() != null) {
-            s.update(s);
+            s.update(c);
         } else {
-            s.save(s);
+            s.save(c);
         }
     }
 
@@ -112,5 +112,15 @@ public class CourseRepositoryImpl implements CourseRepository {
         return s.createQuery(q).getResultList();
 
     }
+
+    @Override
+    public void deleteCourse(int id) {
+        Session s = this.factory.getObject().getCurrentSession();
+        Course c = this.getCourseById(id);
+        s.delete(c);
+    }
+    
+    
+    
 
 }
