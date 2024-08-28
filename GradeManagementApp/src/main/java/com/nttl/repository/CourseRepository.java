@@ -18,5 +18,5 @@ public interface CourseRepository {
     Course getCourseById(int Id);
     List<Course> getCoursesBySemesterId(int id);
     List<Course> getListCourse();
-    void deleteCourse(int id);
+    //void deleteCourse(int id);
 }

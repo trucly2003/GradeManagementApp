@@ -5,7 +5,7 @@
 package com.nttl.pojo;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -43,9 +43,9 @@ public class Enrollment implements Serializable {
     @Column(name = "locked")
     private Boolean locked;
     @OneToMany(mappedBy = "enrollmentId")
-    private Set<Score> scoreSet;
+    private Collection<Score> scoreCollection;
     @OneToMany(mappedBy = "enrollmentId")
-    private Set<Draft> draftSet;
+    private Collection<Draft> draftCollection;
     @JoinColumn(name = "course_id", referencedColumnName = "course_id")
     @ManyToOne
     private Course courseId;
@@ -77,21 +77,21 @@ public class Enrollment implements Serializable {
     }
 
     @XmlTransient
-    public Set<Score> getScoreSet() {
-        return scoreSet;
+    public Collection<Score> getScoreCollection() {
+        return scoreCollection;
     }
 
-    public void setScoreSet(Set<Score> scoreSet) {
-        this.scoreSet = scoreSet;
+    public void setScoreCollection(Collection<Score> scoreCollection) {
+        this.scoreCollection = scoreCollection;
     }
 
     @XmlTransient
-    public Set<Draft> getDraftSet() {
-        return draftSet;
+    public Collection<Draft> getDraftCollection() {
+        return draftCollection;
     }
 
-    public void setDraftSet(Set<Draft> draftSet) {
-        this.draftSet = draftSet;
+    public void setDraftCollection(Collection<Draft> draftCollection) {
+        this.draftCollection = draftCollection;
     }
 
     public Course getCourseId() {

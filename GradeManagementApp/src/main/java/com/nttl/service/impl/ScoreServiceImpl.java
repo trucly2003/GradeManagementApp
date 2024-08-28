@@ -21,14 +21,14 @@ public class ScoreServiceImpl implements ScoreService{
     @Autowired
     private ScoreRepository scoreRepository;
 
-    @Override
-    public boolean existsByEnrollmentId(int enrollmentId) {
-        return scoreRepository.existsByEnrollmentId(enrollmentId);
-    }
+//    @Override
+//    public boolean existsByEnrollmentId(int enrollmentId) {
+//        return scoreRepository.existsByEnrollmentId(enrollmentId);
+//    }
 
-    @Override
-    public List<Score> getAllScores() {
-        return scoreRepository.getAllScores();
+   @Override
+    public List<Score> getScoresByEnrollmentId(int enrollmentId) {
+        return scoreRepository.getScoresByEnrollmentId(enrollmentId);
     }
 
     @Override
@@ -41,8 +41,9 @@ public class ScoreServiceImpl implements ScoreService{
         return scoreRepository.getScoreById(id);
     }
 
-    @Override
-    public void deleteScore(int id) {
-        scoreRepository.deleteScore(id);
-    }
+//    @Override
+//    public void deleteScore(int id) {
+//        scoreRepository.deleteScore(id);
+//    }
+
 }

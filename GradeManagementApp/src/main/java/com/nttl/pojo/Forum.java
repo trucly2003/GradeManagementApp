@@ -5,7 +5,7 @@
 package com.nttl.pojo;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -51,7 +51,7 @@ public class Forum implements Serializable {
     @ManyToOne
     private Course courseId;
     @OneToMany(mappedBy = "forumId")
-    private Set<Post> postSet;
+    private Collection<Post> postCollection;
 
     public Forum() {
     }
@@ -90,12 +90,12 @@ public class Forum implements Serializable {
     }
 
     @XmlTransient
-    public Set<Post> getPostSet() {
-        return postSet;
+    public Collection<Post> getPostCollection() {
+        return postCollection;
     }
 
-    public void setPostSet(Set<Post> postSet) {
-        this.postSet = postSet;
+    public void setPostCollection(Collection<Post> postCollection) {
+        this.postCollection = postCollection;
     }
 
     @Override

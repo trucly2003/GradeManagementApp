@@ -18,5 +18,5 @@ public interface CourseService {
     Course getCourseById(int Id);
     List<Course> getCoursesBySemesterId(int id);
     List<Course> getListCourse();
-    boolean deleteCourse(int id);
+//   boolean deleteCourse(int id);
 }

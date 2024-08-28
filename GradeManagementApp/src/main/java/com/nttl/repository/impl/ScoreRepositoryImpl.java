@@ -70,4 +70,12 @@ public class ScoreRepositoryImpl implements ScoreRepository {
             session.delete(score);
         }
     }
+
+    @Override
+    public List<Score> getScoresByEnrollmentId(int enrollmentId) {
+        Session session = this.factory.getObject().getCurrentSession();
+        Query query = session.createQuery("FROM Score WHERE enrollmentId.enrollmentId = :enrollmentId");
+        query.setParameter("enrollmentId", enrollmentId);
+        return query.getResultList();
+    }
 }

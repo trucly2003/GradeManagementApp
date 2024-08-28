@@ -26,11 +26,11 @@ public class CourseServiceImpl implements CourseService {
     @Autowired
     private CourseRepository courseRepo;
     
-    @Autowired
-    private EnrollmentRepository enrollRepo;
-    
-    @Autowired
-    private ForumRepository forumRepo;
+//    @Autowired
+//    private EnrollmentRepository enrollRepo;
+//    
+//    @Autowired
+//    private ForumRepository forumRepo;
 
     @Override
     public List<Course> getCourses(Map<String, String> params) {
@@ -57,28 +57,28 @@ public class CourseServiceImpl implements CourseService {
         return this.courseRepo.getListCourse();
     }
 
-    private boolean isCourseEnrolled(Integer courseId) {
-        // Kiểm tra xem khóa học có đang được đăng ký trong bảng Enrollment không
-        return enrollRepo.existsByCourseId(courseId);
-    }
+//    private boolean isCourseEnrolled(Integer courseId) {
+//        // Kiểm tra xem khóa học có đang được đăng ký trong bảng Enrollment không
+//        return enrollRepo.existsByCourseId(courseId);
+//    }
+//
+//    private boolean isCourseInForum(Integer courseId) {
+//        // Kiểm tra xem khóa học có xuất hiện trong bảng Forum không
+//        return forumRepo.existsByCourseId(courseId);
+//    }
 
-    private boolean isCourseInForum(Integer courseId) {
-        // Kiểm tra xem khóa học có xuất hiện trong bảng Forum không
-        return forumRepo.existsByCourseId(courseId);
-    }
-
-    @Override
-    public boolean deleteCourse(int id) {
-       
-        if (isCourseEnrolled(id)) {
-            return false;
-        }
-
-        if (isCourseInForum(id)) {
-            return false; 
-        }
-
-        this.courseRepo.deleteCourse(id);
-        return true;
-    }
+//    @Override
+//    public boolean deleteCourse(int id) {
+//       
+//        if (isCourseEnrolled(id)) {
+//            return false;
+//        }
+//
+//        if (isCourseInForum(id)) {
+//            return false; 
+//        }
+//
+//        this.courseRepo.deleteCourse(id);
+//        return true;
+//    }
 }

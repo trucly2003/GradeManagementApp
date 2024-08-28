@@ -5,7 +5,7 @@
 package com.nttl.pojo;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -52,7 +52,7 @@ public class Post implements Serializable {
     @ManyToOne
     private User userId;
     @OneToMany(mappedBy = "postId")
-    private Set<Comment> commentSet;
+    private Collection<Comment> commentCollection;
 
     public Post() {
     }
@@ -94,12 +94,12 @@ public class Post implements Serializable {
     }
 
     @XmlTransient
-    public Set<Comment> getCommentSet() {
-        return commentSet;
+    public Collection<Comment> getCommentCollection() {
+        return commentCollection;
     }
 
-    public void setCommentSet(Set<Comment> commentSet) {
-        this.commentSet = commentSet;
+    public void setCommentCollection(Collection<Comment> commentCollection) {
+        this.commentCollection = commentCollection;
     }
 
     @Override

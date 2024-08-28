@@ -113,12 +113,12 @@ public class CourseRepositoryImpl implements CourseRepository {
 
     }
 
-    @Override
-    public void deleteCourse(int id) {
-        Session s = this.factory.getObject().getCurrentSession();
-        Course c = this.getCourseById(id);
-        s.delete(c);
-    }
+//    @Override
+//    public void deleteCourse(int id) {
+//        Session s = this.factory.getObject().getCurrentSession();
+//        Course c = this.getCourseById(id);
+//        s.delete(c);
+//    }
     
     
     

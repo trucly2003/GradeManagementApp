@@ -11,6 +11,7 @@
     <class>com.nttl.pojo.Post</class>
     <class>com.nttl.pojo.Score</class>
     <class>com.nttl.pojo.Draft</class>
+    <class>com.nttl.pojo.Class</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/grademanagementdb?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

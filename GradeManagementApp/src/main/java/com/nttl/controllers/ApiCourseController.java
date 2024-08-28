@@ -18,21 +18,21 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Ly Nguyen
  */
-@RestController
-@RequestMapping("/api")
-public class ApiCourseController {
-    @Autowired
-    private CourseService courseService;
-
-    @DeleteMapping("course/{courseId}")
-    public ResponseEntity<Void> destroy(@PathVariable(value = "courseId") int id) {
-        boolean isDeleted = this.courseService.deleteCourse(id);
-
-        if (isDeleted) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-    }
-}
+//@RestController
+//@RequestMapping("/api")
+//public class ApiCourseController {
+//    @Autowired
+//    private CourseService courseService;
+//
+//    @DeleteMapping("course/{courseId}")
+//    public ResponseEntity<Void> destroy(@PathVariable(value = "courseId") int id) {
+//        boolean isDeleted = this.courseService.deleteCourse(id);
+//
+//        if (isDeleted) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        } else {
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+//    }
+//}
 

@@ -42,4 +42,8 @@
         <put-attribute name="title" value="Ghi danh khóa học" />
         <put-attribute name="content" value="/WEB-INF/pages/enrollments.jsp" />
     </definition>
+     <definition name="scoreList" extends="baseLayout">
+        <put-attribute name="title" value="Danh sách bảng điểm" />
+        <put-attribute name="content" value="/WEB-INF/pages/scoreList.jsp" />
+    </definition>
 </tiles-definitions>

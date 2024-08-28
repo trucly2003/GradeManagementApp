@@ -17,4 +17,8 @@ public interface ScoreRepository {
     void addOrUpdate(Score score);
     Score getScoreById(int id);
     void deleteScore(int id);
+     List<Score> getScoresByEnrollmentId(int enrollmentId);
+
+   
+  
 }
