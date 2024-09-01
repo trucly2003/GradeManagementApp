@@ -42,8 +42,21 @@
         <put-attribute name="title" value="Ghi danh khóa học" />
         <put-attribute name="content" value="/WEB-INF/pages/enrollments.jsp" />
     </definition>
-     <definition name="scoreList" extends="baseLayout">
+    <definition name="score" extends="baseLayout">
         <put-attribute name="title" value="Danh sách bảng điểm" />
         <put-attribute name="content" value="/WEB-INF/pages/scoreList.jsp" />
     </definition>
+    <definition name="coursesDetail" extends="baseLayout">
+        <put-attribute name="title" value="Danh sách các khóa học" />
+        <put-attribute name="content" value="/WEB-INF/pages/coursesDetail.jsp" />
+    </definition>
+    <definition name="scoresDetail" extends="baseLayout">
+        <put-attribute name="title" value="Chi tiết điểm số" />
+        <put-attribute name="content" value="/WEB-INF/pages/scoresDetail.jsp" />
+    </definition>
+    <definition name="login" extends="baseLayout">
+        <put-attribute name="title" value="Đăng nhập" />
+        <put-attribute name="content" value="/WEB-INF/pages/login.jsp" />
+    </definition>
+
 </tiles-definitions>

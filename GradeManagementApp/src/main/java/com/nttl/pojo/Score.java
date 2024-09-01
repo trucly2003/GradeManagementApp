@@ -20,6 +20,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.validation.constraints.PositiveOrZero;
 
 /**
  *
@@ -42,8 +43,10 @@ public class Score implements Serializable {
     @Column(name = "score_id")
     private Integer scoreId;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @PositiveOrZero(message = "Final score must be zero or positive")
     @Column(name = "final")
     private BigDecimal final1;
+     @PositiveOrZero(message = "Midterm score must be zero or positive")
     @Column(name = "midterm")
     private BigDecimal midterm;
     @Lob

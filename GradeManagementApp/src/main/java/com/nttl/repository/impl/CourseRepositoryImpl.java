@@ -5,6 +5,7 @@
 package com.nttl.repository.impl;
 
 import com.nttl.pojo.Course;
+import com.nttl.pojo.Enrollment;
 import com.nttl.pojo.Semester;
 import com.nttl.repository.CourseRepository;
 import java.util.ArrayList;
@@ -78,7 +79,7 @@ public class CourseRepositoryImpl implements CourseRepository {
 
         return query.getResultList();
     }
-    
+
     @Override
     public List<Course> getListCourse() {
         Session s = this.factory.getObject().getCurrentSession();
@@ -113,14 +114,37 @@ public class CourseRepositoryImpl implements CourseRepository {
 
     }
 
-//    @Override
-//    public void deleteCourse(int id) {
-//        Session s = this.factory.getObject().getCurrentSession();
-//        Course c = this.getCourseById(id);
-//        s.delete(c);
-//    }
-    
-    
-    
+    @Override
+    public void deleteCourse(int id) {
+        Session s = this.factory.getObject().getCurrentSession();
+        Course c = this.getCourseById(id);
+        s.delete(c);
+    }
+
+    @Override
+    public List<Enrollment> getEnrollmentsByCourseId(int courseId) {
+        Session session = this.factory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+
+        CriteriaQuery<Enrollment> query = builder.createQuery(Enrollment.class);
+        Root<Enrollment> root = query.from(Enrollment.class);
+
+        query.select(root).where(builder.equal(root.get("courseId").get("courseId"), courseId));
+
+        return session.createQuery(query).getResultList();
+    }
+
+    @Override
+    public List<Enrollment> getEnrollmentsByStudentId(int studentId) {
+        Session session = this.factory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+
+        CriteriaQuery<Enrollment> query = builder.createQuery(Enrollment.class);
+        Root<Enrollment> root = query.from(Enrollment.class);
+
+        query.select(root).where(builder.equal(root.get("studentId").get("userId"), studentId));
+
+        return session.createQuery(query).getResultList();
+    }
 
 }

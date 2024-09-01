@@ -8,10 +8,12 @@ import com.nttl.pojo.Course;
 import com.nttl.pojo.User;
 import com.nttl.repository.UserRepository;
 import java.util.List;
+import javax.persistence.TemporalType;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
@@ -62,5 +64,14 @@ public class UserRepositoryImpl implements UserRepository {
     public User getUserById(int id) {
         Session s = this.factory.getObject().getCurrentSession();
         return s.get(User.class, id);
+    }
+
+    @Override
+    public User getUserByUsername(String username) {
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("User.findByUsername");
+        q.setParameter("username", username);
+        
+        return (User) q.getSingleResult();
     }
 }

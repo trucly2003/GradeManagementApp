@@ -42,8 +42,8 @@ public class EnrollmentServiceImpl implements EnrollmentService {
         return enrollmentRepository.getEnrollmentById(id);
     }
 
-//    @Override
-//    public void deleteEnrollment(int id) {
-//        enrollmentRepository.deleteEnrollment(id);
-//    }
+    @Override
+    public void deleteEnrollment(int id) {
+        enrollmentRepository.deleteEnrollment(id);
+    }
 }

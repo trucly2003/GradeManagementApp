@@ -10,23 +10,32 @@ import com.nttl.pojo.User;
 import com.nttl.repository.UserRepository;
 import com.nttl.service.UserService;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author Ly Nguyen
  */
-@Service
+@Service("userDetailService")
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -57,7 +66,27 @@ public class UserServiceImpl implements UserService {
             }
         }
     }
-    public  User getUserById(int id) {
+
+    public User getUserById(int id) {
         return this.getUserById(id);
+    }
+
+    @Override
+    public User getUserByUsername(String username) {
+        return this.userRepo.getUserByUsername(username);
+    }
+
+
+    @Override
+    @Transactional
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User u = this.getUserByUsername(username);
+        if (u == null) {
+            throw new UsernameNotFoundException("Không tồn tại!");
+        }
+        Set<GrantedAuthority> authorities = new HashSet<>();
+        authorities.add(new SimpleGrantedAuthority(u.getUserRole()));
+        return new org.springframework.security.core.userdetails.User(
+                u.getUsername(), u.getPassword(), authorities);
     }
 }

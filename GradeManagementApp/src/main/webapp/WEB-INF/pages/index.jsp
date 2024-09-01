@@ -20,26 +20,34 @@
             <tr>
                 <td>Semester</td>
                 <td class="d-flex" style="justify-content: end">
-                    <a href="#" class="btn"><i class="bi bi-pencil-square"></i></a>
-                    <button class="btn"><i class="bi bi-trash3"></i></button>
+                    <a href="<c:url value='/semester'/>" class="btn"><i class="bi bi-pencil-square"></i></a>
                 </td>
             </tr>
             <tr>
                 <td>Course</td>
                 <td class="d-flex" style="justify-content: end">
-                    <a href="#" class="btn"><i class="bi bi-pencil-square"></i></a>
+                    <a href="<c:url value='/course'/>" class="btn"><i class="bi bi-pencil-square"></i></a>
 
-                    <button class="btn"><i class="bi bi-trash3"></i> </button>
                 </td>
             </tr>
             <tr>
-                <td>Class</td>
+                <td>Enrollment</td>
                 <td class="d-flex" style="justify-content: end">
-                    <a href="#" class="btn"><i class="bi bi-pencil-square"></i></a>
-                    <button class="btn"><i class="bi bi-trash3"></i></button>
+                    <a href="<c:url value='/enrollments'/>" class="btn"><i class="bi bi-pencil-square"></i></a>
                 </td>
             </tr>
-
+             <tr>
+                <td>Lecturer</td>
+                <td class="d-flex" style="justify-content: end">
+                    <a href="<c:url value='/user?role=lecturer'/>" class="btn"><i class="bi bi-pencil-square"></i></a>
+                </td>
+            </tr>
+             <tr>
+                <td>Student</td>
+                <td class="d-flex" style="justify-content: end">
+                    <a href="<c:url value='/user?role=student'/>" class="btn"><i class="bi bi-pencil-square"></i></a>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

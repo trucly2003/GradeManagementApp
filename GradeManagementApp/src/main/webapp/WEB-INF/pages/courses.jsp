@@ -8,7 +8,7 @@
 <%@taglib   prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-
+<script src="${pageContext.request.contextPath}/resources/js/script.js"></script>
 <div class="container mt-5">
     <h1 class="text-center text-primary mt-1">DANH SÁCH CÁC KHÓA HỌC</h1>
 
@@ -38,11 +38,10 @@
                 <td>
                     <c:url value="/course/edit/${course.courseId}" var="editUrl" />
                     <a href="${editUrl}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                </td>
-                <td>
-                    <c:url value="/api/course/${course.courseId}" var="endpoint" />
+                    <c:url value="/course/${course.courseId}" var="endpoint" />
                     <button onclick="deleteCourse('${endpoint}', ${course.courseId})" class="btn btn-success"><i class="bi bi-trash3"></i></button>
                 </td>
+              
             </tr>
         </c:forEach>
     </tbody>

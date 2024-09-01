@@ -18,9 +18,8 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
  * @author Ly Nguyen
  */
 public interface UserRepository {
-
+    User getUserByUsername(String username);
     List<User> getLecturer();
-
     List<User> getStudent();
     void addOrUpdate(User u);
     

@@ -5,6 +5,7 @@
 package com.nttl.service;
 
 import com.nttl.pojo.Course;
+import com.nttl.pojo.Enrollment;
 import java.util.List;
 import java.util.Map;
 
@@ -18,5 +19,7 @@ public interface CourseService {
     Course getCourseById(int Id);
     List<Course> getCoursesBySemesterId(int id);
     List<Course> getListCourse();
-//   boolean deleteCourse(int id);
+   boolean deleteCourse(int id);
+   List<Enrollment> getEnrollmentsByCourseId(int courseId);
+   List<Enrollment> getEnrollmentsByStudentId(int studentId);
 }

@@ -3,9 +3,13 @@ package com.nttl.controllers;
 import com.nttl.editor.SemesterEditor;
 import com.nttl.editor.UserEditor;
 import com.nttl.pojo.Course;
+import com.nttl.pojo.Enrollment;
+import com.nttl.pojo.Score;
 import com.nttl.pojo.Semester;
 import com.nttl.pojo.User;
 import com.nttl.service.CourseService;
+import com.nttl.service.EnrollmentService;
+import com.nttl.service.ScoreService;
 import com.nttl.service.SemesterService;
 import com.nttl.service.UserService;
 import java.util.List;
@@ -36,6 +40,12 @@ public class CourseController {
 
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private EnrollmentService enrollmentService;
+    
+    @Autowired
+    private ScoreService scoreService;
 
     @RequestMapping("/course")
     public String courseView(Model model) {
@@ -94,6 +104,10 @@ public class CourseController {
         courseService.addOrUpdate(course);
         return "redirect:/course";  // Chuyển hướng tới trang danh sách khóa học sau khi thêm thành công
     }
+    
+    
+
+    
     
 //    @DeleteMapping("/delete/{courseId}")
 //    public ResponseEntity<?> deleteCourse(@PathVariable("courseId") Integer courseId) {
